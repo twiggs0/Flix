@@ -18,6 +18,7 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSArray *filteredMovies;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -31,7 +32,7 @@
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
     
-    
+    [self.activityIndicator startAnimating];
     [self fetchMovies];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -42,7 +43,7 @@
 }
 
 - (void)fetchMovies {
-    NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
+    NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing/?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -70,6 +71,7 @@
             self.movies = dataDictionary[@"results"];
             self.filteredMovies = self.movies;
             NSLog(@"%@", self.movies);
+            
             for (NSDictionary *movie in self.movies) {
                 NSLog(@"%@", movie[@"title"]);
             }
@@ -81,6 +83,7 @@
         }
         
         [self.refreshControl endRefreshing];
+        [self.activityIndicator stopAnimating];
     }];
     [task resume];
 }
