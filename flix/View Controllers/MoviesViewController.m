@@ -31,6 +31,7 @@
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
     
+    
     [self fetchMovies];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -47,6 +48,20 @@
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
             NSLog(@"%@", [error localizedDescription]);
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Get movies"
+                                                                           message:@"The internet connection seems to be offline."
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            UIAlertAction *tryAgain = [UIAlertAction actionWithTitle:@"Try Again"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 // handle response here.
+                                                             }];
+            [alert addAction:tryAgain];
+            
+            [self presentViewController:alert animated:YES completion:^{
+                // optional code for what happens after the alert controller has finished presenting
+            }];
+            
         }
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
