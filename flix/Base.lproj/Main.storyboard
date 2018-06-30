@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Movies-->
+        <!--Now Playing-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MoviesViewController" sceneMemberID="viewController">
@@ -75,7 +75,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Movies" id="yzB-xy-hVU"/>
+                    <navigationItem key="navigationItem" title="Now Playing" id="yzB-xy-hVU"/>
                     <connections>
                         <outlet property="activityIndicator" destination="GlI-yi-v7f" id="cvU-vu-bbz"/>
                         <outlet property="searchBar" destination="moG-D5-eIS" id="XjQ-e0-G8g"/>
@@ -173,7 +173,7 @@
             </objects>
             <point key="canvasLocation" x="1545" y="-1"/>
         </scene>
-        <!--Movies Grid View Controller-->
+        <!--Top Rated-->
         <scene sceneID="FfY-wZ-NDC">
             <objects>
                 <viewController id="Mip-cF-NT9" customClass="MoviesGridViewController" sceneMemberID="viewController">
@@ -189,7 +189,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OCH-EX-9e1">
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="2Y7-ap-b6r">
                                     <size key="itemSize" width="133" height="187"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -221,7 +221,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="BUF-DL-hEH"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7q7-db-8i6"/>
+                    <navigationItem key="navigationItem" title="Top Rated" id="7q7-db-8i6"/>
                     <connections>
                         <outlet property="collectionView" destination="OCH-EX-9e1" id="Ch5-Kp-kfZ"/>
                         <outlet property="searchBar" destination="w1k-oc-pA1" id="tyc-lg-s5E"/>
@@ -257,6 +257,6 @@
         <image name="now_playing_tabbar_item" width="21" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="V0b-2O-j2K"/>
+        <segue reference="u1y-E8-Yml"/>
     </inferredMetricsTieBreakers>
 </document>
